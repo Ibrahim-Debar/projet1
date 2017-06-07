@@ -20,13 +20,13 @@ Route::get('/admin', function () {
 });
 
 Route::resource('livre','LivreController');
-Route::resource('These','TheseController');
-Route::resource('Publication','PublicationController');
-Route::resource('Journal','JournalController');
-Route::resource('Professeur','ProfesseurController');
-Route::resource('Carte','CarteController');
-Route::resource('Demande','DemandeController');
-Route::resource('Emprunt','EmpruntController');
+Route::resource('these','TheseController');
+Route::resource('publication','PublicationController');
+Route::resource('journal','JournalController');
+Route::resource('enseignant','EnseignantController');
+Route::resource('carte','CarteController');
+Route::resource('demande','DemandeController');
+Route::resource('emprunt','EmpruntController');
 
 
 Auth::routes();

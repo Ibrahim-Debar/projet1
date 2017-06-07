@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\enseignant;
 use Illuminate\Http\Request;
 
-class ProfesseurController extends Controller
+class EnseignantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class ProfesseurController extends Controller
      */
     public function index()
     {
-        return view('professeurs.indexPr');
+        return view('enseignants.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ProfesseurController extends Controller
      */
     public function create()
     {
-        return view('professeurs.creerPr');
+        return view('enseignants.create');
     }
 
     /**
@@ -34,7 +35,32 @@ class ProfesseurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $rules = array(
+            'nom'          => 'required|regex:/^[\pL\s\-]+$/u',
+            'prenom'       => 'required|regex:/^[\pL\s\-]+$/u',
+            'email'        => 'email|unique:enseignants,email',
+        );
+
+        // create custom validation messages ------------------
+        $messages = array(
+            'required' => 'The :attribute is really really really important.',
+            'regex'  => ' :attribute invalid format',
+            'unique' => ':attribute existe déjà '
+        );
+
+
+
+        $this->validate($request,$rules,$messages);
+
+
+       enseignant::create([
+           'nom'    => $request->input('nom'),
+           'prenom' => $request->input('prenom'),
+           'email'  => $request->input('email'),
+       ]);
+
+       return redirect('enseignant/create')->with('insert','101010101');
     }
 
     /**

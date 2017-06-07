@@ -26,35 +26,35 @@
                 </div>
                 <div class="x_content">
                     <br>
-                    <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    @foreach($errors->all() as $err)
+                        <li>{{$err}}</li>
+                    @endforeach
+                    {{$insert or ""}}
+
+                    <form  class="form-horizontal form-label-left"  method="post" action="{{url('enseignant/')}}">
+
+                        {!! Form::token()  !!}
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nom <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="nom" name="nom"  class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Prenom <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="prenom" name="prenom"  class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="email" id="email">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Département</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                            </div>
-                        </div>
-
 
                         <div class="ln_solid"></div>
                         <div class="form-group">

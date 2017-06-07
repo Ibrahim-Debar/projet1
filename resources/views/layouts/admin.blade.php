@@ -61,45 +61,43 @@
                             </li>
                             <li><a><i class="fa fa-book"></i> Thèses <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{url('These/create')}}">Ajouter une thèse</a></li>
-                                    <li><a href="{{url('These/show')}}">Liste Thèses</a></li>
+                                    <li><a href="{{url('these/create')}}">Ajouter une thèse</a></li>
+                                    <li><a href="{{url('these/show')}}">Liste Thèses</a></li>
 
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-file"></i> Publication <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{url('Publication/create')}}">Ajouter publication</a></li>
-                                    <li><a href="{{url('Publication/show')}}">Liste Publication</a></li>
+                                    <li><a href="{{url('publication/create')}}">Ajouter publication</a></li>
+                                    <li><a href="{{url('publication/show')}}">Liste Publication</a></li>
                                     <li><a href="calendar.html">Calendar</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-file"></i> Journal <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{url('Journal/create')}}">ajouter journal</a></li>
-                                    <li><a href="{{url('Journal/show')}}">Liste Journaux</a></li>
+                                    <li><a href="{{url('journal/create')}}">ajouter journal</a></li>
+                                    <li><a href="{{url('journal/show')}}">Liste Journaux</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-book"></i> Cartes <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{url('Carte/create')}}">Ajouter carte</a></li>
-                                    <li><a href="{{url('Carte/indexC')}}">Liste carte </a></li>
+                                    <li><a href="{{url('carte/create')}}">Ajouter carte</a></li>
+                                    <li><a href="{{url('carte/index')}}">Liste carte </a></li>
 
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-reply"></i> Gestion Demande <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{url('Demande/')}}">Demande en ligne</a></li>
-                                    <li><a href="{{url('Emprunt/')}}"> emprunts Validés </a></li>
-                                    <li><a href="{{url('Emprunt/create')}}">Demande à domoicile</a></li>
+                                    <li><a href="{{url('demande/')}}">Demande en ligne</a></li>
+                                    <li><a href="{{url('emprunt/')}}"> emprunts Validés </a></li>
+                                    <li><a href="{{url('emprunt/create')}}">Demande à domoicile</a></li>
 
                                 </ul>
                             </li>
-
-
                             <li><a><i class="fa fa-user"></i> Professeur <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{url('Professeur/create')}}">Ajouter professeur</a></li>
-                                    <li><a href="{{url('Professeur/show')}}">Liste Professeurs</a></li>
+                                    <li><a href="{{url('enseignant/create')}}">Ajouter professeur</a></li>
+                                    <li><a href="{{url('enseignant/show')}}">Liste Professeurs</a></li>
 
                                 </ul>
                             </li>
