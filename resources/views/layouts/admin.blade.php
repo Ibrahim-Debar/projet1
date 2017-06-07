@@ -20,6 +20,8 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+    @yield('css')
+
 </head>
 
 <body class="nav-md">
@@ -97,7 +99,7 @@
                             <li><a><i class="fa fa-user"></i> Professeur <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('enseignant/create')}}">Ajouter professeur</a></li>
-                                    <li><a href="{{url('enseignant/show')}}">Liste Professeurs</a></li>
+                                    <li><a href="{{url('enseignant/')}}">Liste Professeurs</a></li>
 
                                 </ul>
                             </li>
@@ -265,6 +267,7 @@
 <script src="{{asset('vendors/nprogress/nprogress.js')}}"></script>
 <!-- jQuery custom content scroller -->
 <script src="{{asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+@yield('js')
 
 <!-- Custom Theme Scripts -->
 <script src="{{asset('build/js/custom.min.js')}}"></script>

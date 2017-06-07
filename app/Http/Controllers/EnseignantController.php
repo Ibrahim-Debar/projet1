@@ -14,7 +14,9 @@ class EnseignantController extends Controller
      */
     public function index()
     {
-        return view('enseignants.index');
+        $table=enseignant::all();
+
+        return view('enseignants.index',['enseignants' => $table]);
     }
 
     /**
@@ -60,7 +62,7 @@ class EnseignantController extends Controller
            'email'  => $request->input('email'),
        ]);
 
-       return redirect('enseignant/create')->with('insert','101010101');
+       return redirect('enseignant/create')->with('message','Everything went great');
     }
 
     /**
@@ -82,7 +84,10 @@ class EnseignantController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $enseignant= enseignant::find($id);
+
+       return view('enseignants.editer',['enseignant'=>$enseignant]);
     }
 
     /**
@@ -94,7 +99,32 @@ class EnseignantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array(
+            'nom'          => 'required|regex:/^[\pL\s\-]+$/u',
+            'prenom'       => 'required|regex:/^[\pL\s\-]+$/u',
+            'email'        => 'email',
+        );
+
+        // create custom validation messages ------------------
+        $messages = array(
+            'required' => 'The :attribute is really really really important.',
+            'regex'  => ' :attribute invalid format',
+
+        );
+
+
+
+        $this->validate($request,$rules,$messages);
+
+
+        enseignant::where('id',$id)->
+        update([
+            'nom'    => $request->input('nom'),
+            'prenom' => $request->input('prenom'),
+            'email'  => $request->input('email'),
+        ]);
+
+        return redirect('enseignant/')->with('message','Everything went great');
     }
 
     /**
@@ -105,6 +135,7 @@ class EnseignantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        enseignant::destroy($id);
+        return redirect('enseignant/');
     }
 }

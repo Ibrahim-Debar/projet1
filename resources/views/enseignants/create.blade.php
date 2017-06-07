@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -24,47 +23,68 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
+
+
+
+                @if(count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                        @foreach($errors->all() as $err)
+                            <li>{{$err}}</li>
+                        @endforeach
+                    </div>
+
+                @endif
+
+                @if(session('message'))
+
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-check"></i> Success!</h4>
+                            <p>{{session('message')}}</p>
+                        </div>
+                @endif
+
                 <div class="x_content">
                     <br>
-                    @foreach($errors->all() as $err)
-                        <li>{{$err}}</li>
-                    @endforeach
-                    {{$insert or ""}}
 
-                    <form  class="form-horizontal form-label-left"  method="post" action="{{url('enseignant/')}}">
 
-                        {!! Form::token()  !!}
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nom <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="nom" name="nom"  class="form-control col-md-7 col-xs-12">
-                            </div>
+                    {!! Form::open(['url' => 'enseignant/','class'=>'form-horizontal form-label-left']) !!}
+
+                    <div class="form-group">
+                        {!!  Form::label('nom', 'Nom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('nom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Prenom <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="prenom" name="prenom"  class="form-control col-md-7 col-xs-12">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="email" id="email">
-                            </div>
-                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('prenom', 'Prenom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
-                        <div class="ln_solid"></div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button type="submit" class="btn btn-primary">Cancel</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('prenom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('email', 'Email', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
-                    </form>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('email', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
+                            <button type="submit" class="btn btn-primary">Cancel</button>
+
+                        </div>
+                    </div>
+
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
