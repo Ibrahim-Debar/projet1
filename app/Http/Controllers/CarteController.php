@@ -20,9 +20,9 @@ class CarteController extends Controller
 
         $carte = Carte::ListeCarte();
 
-        dd($carte);
+       
 
-        //return view('cartes.index');
+        return view('cartes.index');
     }
 
     /**
@@ -43,8 +43,6 @@ class CarteController extends Controller
      */
     public function store(Request $request)
     {
-
-
 
         Carte::create([
             'titre_propre' => $request->input('titre'),
