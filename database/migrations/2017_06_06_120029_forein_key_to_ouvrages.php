@@ -15,8 +15,8 @@ class ForeinKeyToOuvrages extends Migration
     {
         Schema::table('ouvrages', function (Blueprint $table){
             $table->integer('types_ouvrage_id')->unsigned();
-            $table->integer('rayon_id')->unsigned();
-            $table->integer('collection_id')->unsigned();
+            $table->integer('rayon_id')->unsigned()->nullable();;
+            $table->integer('collection_id')->unsigned()->nullable();;
 
             $table->foreign('types_ouvrage_id')->references('id')->on('types_ouvrages');
             $table->foreign('rayon_id')->references('id')->on('rayons');

@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ouvrage extends Model
 {
-    //
+    protected $fillable = ['','',''];
+
 }

@@ -73,7 +73,7 @@ class EnseignantController extends Controller
      */
     public function show($id)
     {
-        //
+        //types_ouvrage_id
     }
 
     /**

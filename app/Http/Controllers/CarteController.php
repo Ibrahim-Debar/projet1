@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Carte;
+use App\ouvrage;
 use Illuminate\Http\Request;
 
 class CarteController extends Controller
 {
+
+    public $type_ouvr = 3;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,12 @@ class CarteController extends Controller
      */
     public function index()
     {
-        return view('cartes.indexC');
+
+        $carte = Carte::ListeCarte();
+
+        dd($carte);
+
+        //return view('cartes.index');
     }
 
     /**
@@ -23,7 +32,7 @@ class CarteController extends Controller
      */
     public function create()
     {
-        return view('cartes.creerC');
+        return view('cartes.create');
     }
 
     /**
@@ -34,7 +43,17 @@ class CarteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+        Carte::create([
+            'titre_propre' => $request->input('titre'),
+            'tyope_carte' => $request->input('type'),
+            'echelle' => $request->input('echelle'),
+            'types_ouvrage_id' => $this->type_ouvr
+        ]);
+
+
     }
 
     /**

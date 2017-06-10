@@ -15,22 +15,23 @@ class CreateOuvragesTable extends Migration
     {
         Schema::create('ouvrages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('isbn');
-            $table->string('titre_propre');
-            $table->string('complement_titre');
-            $table->string('editeur');
-            $table->date('annee_edition');
-            $table->float('prix');
-            $table->text('resume');
-            $table->string('mot_cle');
-            $table->string('langue');
-            $table->date('date_soutenue');
-            $table->integer('issn');
-            $table->integer('volume');
-            $table->integer('nsupplement');
-            $table->integer('pagination');
-            $table->string('tyope_carte');
-            $table->float('echelle');
+            $table->integer('isbn')->nullable();
+            $table->text('titre_propre')->nullable();
+            $table->text('complement_titre')->nullable();
+            $table->text('edition')->nullable();
+            $table->date('annee_edition')->nullable();
+            $table->float('prix')->nullable();
+            $table->text('resume')->nullable();
+            $table->string('mot_cle')->nullable();
+            $table->string('langue')->nullable();
+            $table->date('date_soutenue')->nullable();
+            $table->integer('issn')->nullable();
+            $table->integer('volume')->nullable();
+            $table->integer('nsupplement')->nullable();
+            $table->integer('pagination')->nullable();
+            $table->string('tyope_carte')->nullable();
+            $table->string('these_genre')->nullable();
+            $table->string('echelle')->nullable();
             $table->timestamps();
 
         });
