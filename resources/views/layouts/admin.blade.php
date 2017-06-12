@@ -64,7 +64,7 @@
                             <li><a><i class="fa fa-book"></i> Thèses <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('these/create')}}">Ajouter une thèse</a></li>
-                                    <li><a href="{{url('these/show')}}">Liste Thèses</a></li>
+                                    <li><a href="{{url('these/')}}">Liste Thèses</a></li>
 
                                 </ul>
                             </li>

@@ -13,7 +13,7 @@ class TheseController extends Controller
      */
     public function index()
     {
-        return view('Theses.indexT');
+        return view('theses.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class TheseController extends Controller
      */
     public function create()
     {
-        return view('Theses.creerT');
+        return view('theses.create');
     }
 
     /**
