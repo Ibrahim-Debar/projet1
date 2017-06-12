@@ -26,77 +26,102 @@
                   </div>
                   <div class="x_content">
                     <br>
-                    <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+
+
+                      {!! Form::open(['url' => 'livre/','class'=>'form-horizontal form-label-left']) !!}
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn-ean">ISBN - EAN <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn-ean">N°Ordre <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="titre-propre">Titre Propre <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Complément du titre </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="complement-titre">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="titre-propre">Auteur Principal <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Auteur Secondaire </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="complement-titre">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Langue de publication</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male" data-parsley-multiple="gender"> &nbsp; Anglais &nbsp;
-                            </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> Francais
-                            </label>
+                          {!!  Form::label('isbn', 'ISBN ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('isbn', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                           </div>
-                        </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Type d'ouvrage <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                        </div>
+                          {!!  Form::label('titre', 'Titre Propre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('titre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
                       </div>
-                      <div class="ln_solid"></div>
                       <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
+                          {!!  Form::label('auteur', 'Auteur(s) *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('auteur', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          {!!  Form::label('editeur', 'Editeur', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('editeur', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          {!!  Form::label('collection', 'Collection', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('collection', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          {!!  Form::label('annee', 'Annee', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('annee', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          {!!  Form::label('prix', 'Prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('prix', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
                       </div>
 
-                    </form>
+                      <div class="form-group">
+                          {!!  Form::label('langue', 'Langue ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::select('langue', ['ar'=>'Arabic', 'en'=>'English', 'fr' =>'French', 'es'=>'Spanish'], 'fr', ['placeholder' => 'Pick a size...']) !!}
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          {!!  Form::label('typeAchat', 'Type Achat ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::text('typeAchat', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          {!!  Form::label('resumme', 'Resumme  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::textarea('resumme', '',['class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          {!!  Form::label('motCles', 'Mot-cles  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              {!! Form::textarea('motCles', '',['class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                          </div>
+                      </div>
+
+
+                      <div class="form-group">
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                              {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
+                              <button type="submit" class="btn btn-primary">Cancel</button>
+
+                          </div>
+                      </div>
+
+                      {!! Form::close() !!}
+
                   </div>
                 </div>
               </div>

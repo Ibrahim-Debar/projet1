@@ -26,20 +26,20 @@
                 </div>
                 <div class="x_content">
                     <br>
-                    {!! Form::open(['url' => 'carte/','class'=>'form-horizontal form-label-left']) !!}
+                    {!! Form::open(['url' => 'these/','class'=>'form-horizontal form-label-left']) !!}
 
                     <div class="form-group">
-                        {!!  Form::label('titre', 'Titre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('titre_propre', 'Titre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('titre_propre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('auteur', 'Auteur *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('nom', 'Auteur *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('auteur', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('nom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -50,25 +50,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('annee', 'annee *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('date_soutenue', 'Date Soutenue *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('annee', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('date_soutenue', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('genre', 'Genre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('these_genre', 'Genre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('genre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('these_genre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
-                            <button type="submit" class="btn btn-primary">Cancel</button>
+                            {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
+                            <button type="submit" class="btn btn-primary">Annuler</button>
 
                         </div>
                     </div>

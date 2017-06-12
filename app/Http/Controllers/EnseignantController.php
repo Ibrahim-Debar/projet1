@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Auteur;
+use App\Carte;
 use App\enseignant;
 use Illuminate\Http\Request;
 
