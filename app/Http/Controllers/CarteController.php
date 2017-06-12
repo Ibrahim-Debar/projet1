@@ -18,9 +18,8 @@ class CarteController extends Controller
     public function index()
     {
 
+        //new function
         $cartes = Carte::ListeCarte();
-
-
 
         return view('cartes.index',['cartes'=>$cartes]);
     }
@@ -85,7 +84,7 @@ class CarteController extends Controller
      */
     public function show($id)
     {
-        //htest 
+        //htest
     }
 
     /**
