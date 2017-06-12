@@ -24,25 +24,16 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
+
+               @include('alerts.errors');
+
+               @include('alerts.success');
+
+
                 <div class="x_content">
                     <br>
 
                     {!! Form::open(['url' => 'carte/','class'=>'form-horizontal form-label-left']) !!}
-
-                    <div class="form-group">
-                        {!!  Form::label('titre', 'Titre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {!!  Form::label('type', 'Type *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('type', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
-                        </div>
-                    </div>
                     <div class="form-group">
                         {!!  Form::label('echelle', 'Echelle', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
@@ -50,6 +41,63 @@
                             {!! Form::text('echelle', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {!!  Form::label('nom', 'Nom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('nom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('type', 'Catégorie *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('type', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('pays', 'Pays *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('pays', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('nature', 'Nature *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('nature', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('feuille', 'Feuille *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('feuille', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('annee', 'Année d\'édition *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('annee', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('subdivision', 'Subdivision *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('subdivision', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('lieuConservation', 'Lieu de conservation *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('lieuConservation', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+
 
 
                     <div class="form-group">

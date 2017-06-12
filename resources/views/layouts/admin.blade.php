@@ -84,7 +84,7 @@
                             <li><a><i class="fa fa-book"></i> Cartes <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('carte/create')}}">Ajouter carte</a></li>
-                                    <li><a href="{{url('carte/index')}}">Liste carte </a></li>
+                                    <li><a href="{{url('carte/')}}">Liste carte </a></li>
 
                                 </ul>
                             </li>

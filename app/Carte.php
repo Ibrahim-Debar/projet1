@@ -9,7 +9,18 @@ class Carte extends Model
 
     protected $table ="ouvrages";
 
-    protected $fillable = ['titre_propre','tyope_carte','echelle','types_ouvrage_id'];
+    protected $fillable = [
+                            'titre_propre'     ,
+                            'tyope_carte'      ,
+                            'echelle'          ,
+                            'types_ouvrage_id'  ,
+                            'pays'              ,
+                            'nature'            ,
+                            'feuille'           ,
+                            'subdivision'       ,
+                            'lieuConservation',
+                            'annee_edition'
+                        ];
 
     public function scopeListeCarte($query)
     {
