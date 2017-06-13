@@ -57,7 +57,8 @@
                             <li><a><i class="fa fa-book"></i> Livre <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('livre/create')}}">Aouter un livre </a></li>
-                                    <li><a href="{{url('livre/show')}}">Liste livre  </a></li>
+                                    <li><a href="{{url('livre/create')}}">Ajouter Exemplaitr </a></li>
+                                    <li><a href="{{url('livre/')}}">Liste livre  </a></li>
 
                                 </ul>
                             </li>
@@ -237,9 +238,7 @@
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
-                    <div class="title_left">
-                        <h3>Fixed Sidebar <small> Just add class <strong>menu_fixed</strong></small></h3>
-                    </div>
+
                 </div>
                 @yield('content');
             </div>

@@ -24,12 +24,16 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
+                    @include('alerts.success')
+                    @include('alerts.errors')
+
                   <div class="x_content">
                     <br>
 
 
 
                       {!! Form::open(['url' => 'livre/','class'=>'form-horizontal form-label-left']) !!}
+
 
                       <div class="form-group">
                           {!!  Form::label('isbn', 'ISBN ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
@@ -45,12 +49,15 @@
                               {!! Form::text('titre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                           </div>
                       </div>
+
                       <div class="form-group">
+                          <button class="add_field_button">Add More Fields</button>
                           {!!  Form::label('auteur', 'Auteur(s) *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              {!! Form::text('auteur', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                          <div class="col-md-6 col-sm-6 col-xs-12 input_fields_wrap">
+                              {!! Form::text('auteur[]', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                           </div>
+
                       </div>
                       <div class="form-group">
                           {!!  Form::label('editeur', 'Editeur', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
@@ -129,3 +136,32 @@
 
 
 @endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            var max_fields      = 10; //maximum input boxes allowed
+            var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+            var add_button      = $(".add_field_button"); //Add button ID
+
+            var x = 1; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                if(x < max_fields){ //max input box allowed
+
+                    if (x==1)
+                      $(wrapper).append(' <div><br><br><input class="form-control col-md-7 col-xs-12" name="auteur[]" type="text" value="" id="isbn"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                    else
+                        $(wrapper).append('<div><input class="form-control col-md-7 col-xs-12" name="auteur[]" type="text" value="" id="isbn"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                    x++; //text box increment
+                }
+            });
+
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        });
+    </script>
+
+
+    @endsection

@@ -24,50 +24,48 @@
                     <div class="clearfix"></div>
                 </div>
 
-
-
                 @include('alerts.success')
 
                 @include('alerts.errors')
 
                 <div class="x_content">
                     <br>
+                    {!! Form::open(['url' => 'livre/exemplaire/store','class'=>'form-horizontal form-label-left']) !!}
 
-
-
-                    {!! Form::open(['url' => 'enseignant/','class'=>'form-horizontal form-label-left']) !!}
-
+                    <input type="hidden" value="{{$livre->id}}" name="idLivre">
                     <div class="form-group">
-                        {!!  Form::label('nom', 'Nom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('titre', 'Titre ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('nom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('titre', $livre->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('prenom', 'Prenom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('n_ordre', 'N° D\'ordre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prenom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('n_ordre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('email', 'Email', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
+                        {!!  Form::label('type_achat', 'type_achat', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('email', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('type_achat', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        {!!  Form::label('prix', 'prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('prix', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
                             <button type="submit" class="btn btn-primary">Cancel</button>
-
                         </div>
                     </div>
-
                     {!! Form::close() !!}
                 </div>
             </div>
