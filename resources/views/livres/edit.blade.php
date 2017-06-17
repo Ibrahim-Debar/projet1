@@ -42,33 +42,6 @@
                         </div>
                     </div>
 
-
-                    <div class="form-group">
-                        <button class="add_field_button">Add More Fields</button>
-                        <label for="auteur" class="control-label col-md-3 col-sm-3 col-xs-12">Auteur(s) *</label>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 input_fields_wrap">
-                            {!! Form::text('auteur[]', $livre->Auteurs->all()[0]->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}
-
-
-                            @foreach($livre->Auteurs->all() as  $key => $value)
-                                @if($key>0)
-                                @if($key == 1 )
-                                    <div><br><br><br>{!! Form::text('auteur[]', $value->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}<a href="#" class="remove_field">Remove</a></div>
-                                @else
-                                    <div>{!! Form::text('auteur[]', $value->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}<a href="#" class="remove_field">Remove</a></div>
-                                @endif
-                                @endif
-
-
-                            @endforeach
-                        </div>
-
-                    </div>
-
-
-
-
                     <div class="form-group">
                         {!!  Form::label('titre', 'Titre Propre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
@@ -82,6 +55,28 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {!! Form::text('editeur',$livre->edition ,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="add_field_button">Add More Fields</button>
+                        <label for="auteur" class="control-label col-md-3 col-sm-3 col-xs-12">Auteur(s) *</label>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 input_fields_wrap">
+                            {!! Form::text('auteur[]', $livre->Auteurs->all()[0]->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}
+
+
+                            @foreach($livre->Auteurs->all() as  $key => $value)
+                                @if($key>0)
+                                    @if($key == 1 )
+                                        <div><br><br><br>{!! Form::text('auteur[]', $value->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}<a href="#" class="remove_field">Remove</a></div>
+                                    @else
+                                        <div>{!! Form::text('auteur[]', $value->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}<a href="#" class="remove_field">Remove</a></div>
+                                    @endif
+                                @endif
+
+
+                            @endforeach
+                        </div>
+
                     </div>
                     <div class="form-group">
                         {!!  Form::label('collection', 'Collection', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
