@@ -16,6 +16,7 @@ class LivreController extends Controller
      */
     public function index()
     {
+        // list livre
         $livres = livre::Listelivre();
 
 
