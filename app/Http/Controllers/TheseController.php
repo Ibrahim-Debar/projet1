@@ -38,7 +38,7 @@ class TheseController extends Controller
     public function store(Request $request)
     {
 
-
+//these
 
         $rules = array(
             'titre_propre'                    => 'required',
@@ -94,8 +94,8 @@ class TheseController extends Controller
     public function edit($id)
     {
         $these =these::find($id);
-        $auteur =Auteur::find($id);
-        return view('theses.edit',['these'=>$these],['Auteur'=>$auteur]);
+
+        return view('theses.edit',['these'=>$these]);
 
     }
 

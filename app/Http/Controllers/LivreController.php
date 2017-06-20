@@ -116,12 +116,8 @@ class LivreController extends Controller
      */
     public function edit($id)
     {
-
-
         $livre = livre::find($id);
-
         return view('livres.edit',['livre'=>$livre]);
-
     }
 
     /**

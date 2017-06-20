@@ -155,4 +155,84 @@ class CarteController extends Controller
         return redirect('carte/');
 
     }
+
+
+
+    /**
+     * Show the form for creating a new resource copy.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createCopy($id)
+    {
+        $livre = livre::find($id);
+        return view('livres.exemplaires.create',['livre'=>$livre]);
+    }
+
+    public function storeCopy(Request $request)
+    {
+        $rules = array(
+            'titre'          => 'required',
+            'n_ordre'       => 'required|unique:exemplaires',
+        );
+        // create custom validation messages ------------------
+        $messages = array(
+            'required' => 'The :attribute is really really really important.',
+            'unique' => 'exist :attribute',
+        );
+        $this->validate($request,$rules,$messages);
+        exemplaire::create([
+            "ouvrage_id"=>    $request->input("idLivre"),
+            "n_ordre"=>    $request->input("n_ordre"),
+            "type_achat"=>    $request->input("type_achat"),
+            "prix"=>    $request->input("prix"),
+
+        ]);
+        return redirect()->to($this->getRedirectUrl())->with('message','Everything went great');
+    }
+
+    public function editCopy($id)
+    {
+        $exemple = exemplaire::find($id);
+        return view('livres.exemplaires.edit',['exemple'=>$exemple]);
+    }
+
+    public function updateCopy(Request $request, $id)
+    {
+
+
+        $rules = array(
+            'n_ordre'          => 'required',
+        );
+
+        // create custom validation messages ------------------
+
+        $messages = array(
+            'required' => 'The :attribute is really really really important.',
+        );
+
+        $this->validate($request,$rules,$messages);
+
+        exemplaire::where('id',$id)->update([
+            "n_ordre" => $request->input('n_ordre'),
+            "type_achat" => $request->input('type_achat'),
+            "prix" => $request->input('prix')
+
+        ]);
+
+        return redirect()->route('livre.show',$request->input('idLivre'));
+    }
+
+
+    public function destroyCopy(Request $request,$id)
+    {
+
+        exemplaire::destroy($id);
+        return redirect()->route('livre.show',$request->input('idLivre'));
+
+    }
+
+
+
+
 }

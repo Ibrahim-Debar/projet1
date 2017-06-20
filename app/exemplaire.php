@@ -14,4 +14,8 @@ class exemplaire extends Model
           return $this->belongsTo('App\livre','ouvrage_id');
 
     }
+
+
+
+
 }
