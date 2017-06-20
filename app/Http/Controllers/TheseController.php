@@ -38,7 +38,7 @@ class TheseController extends Controller
     public function store(Request $request)
     {
 
-
+//these
 
         $rules = array(
             'titre_propre'                    => 'required',

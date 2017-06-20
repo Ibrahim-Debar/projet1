@@ -9,7 +9,6 @@
     <link href="{{asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
 
-
 @endsection
 
 @section('content')
@@ -17,48 +16,52 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
+                    <h2>Button Example <small>Users</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
 
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
-                            <tr>
-                                <th>Titre</th>
-                                <th>ISBN</th>
-                                <th>Auteur</th>
-                                <th>annee</th>
-                                <th>Edition</th>
-                                <th>Prix</th>
-                                <th>nombre de copy</th>
-                                <th>Action</th>
-                            </tr>
+                        <tr>
+                            <th>Enseignant</th>
+                            <th>Titre</th>
+                            <th>N°ordre</th>
+                            <th>Delai</th>
+                            <th>date début</th>
+                            <th>date fin</th>
+                            <th>Action</th>
+                        </tr>
                         </thead>
+
                         <tbody>
-                        @foreach($livres as $livre)
+                        @foreach($emprunts as $emprunt)
                             <tr>
-                                <td>{{$livre->titre_propre}}</td>
-                                <td>{{$livre->isbn}}</td>
+                                <td>{{$emprunt->enseignant->nom}}</td>
+                                <td>{{$emprunt->exemplaire->livre->titre_propre}}</td>
+                                <td>{{$emprunt->exemplaire->n_ordre}}</td>
+                                <td>{{$emprunt->deai}}</td>
+                                <td>{{$emprunt->deai}}</td>
+                                <td>{{$emprunt->deai}}</td>
+
                                 <td>
-                                    @if (count($livre->Auteurs->all())>0)
-                                        <?php $last_key =  count($livre->Auteurs->all())  ?>
-                                        @foreach($livre->Auteurs->all() as  $key => $value)
-                                            @if ($key == $last_key-1)
-                                                {{$value->nom}}
-                                            @else
-                                                {{$value->nom}} |
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>{{$livre->annee_edition}}</td>
-                                <td>{{$livre->edition}}</td>
-                                <td>{{$livre->prix}}</td>
-                                <td>{{count($livre->exemplaires->all())}}</td>
-                                <td>
-                                    <a href="{{route('livre.edit',$livre->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>
-                                    <a href="{{url('livre/exemplaire/create/'.$livre->id)}}" class="btn  btn-info"><li class="fa fa-files-o"></li> </a>
-                                    <a href="{{url('livre/'.$livre->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-eye-open"></li> </a>
-                                    <button idlivre="{{$livre->id}}" type="button" class="btn btn-danger deleteEn" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
+                                    <a href="{{route('these.edit',$emprunt->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>
+                                    <button idprof="{{$emprunt->id}}" type="button" class="btn btn-danger deleteEn" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -77,9 +80,9 @@
                     <h4 class="modal-title" id="gridSystemModalLabel"></h4>
                 </div>
 
-                {!! Form::open(['url' => 'livre/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
+                {!! Form::open(['url' => 'these/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
                 <div class="modal-body">
-                    <h1>vasdjhas dasjkdas daksda </h1>
+                    <h1>vous voulez vraiment supprimer cet element? </h1>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">non</button>
@@ -114,12 +117,6 @@
             var handleDataTableButtons = function() {
                 if ($("#datatable-buttons").length) {
                     $("#datatable-buttons").DataTable({
-                        columnDefs: [ {
-                            targets: 0,
-                            render: function ( data, type, row ) {
-                                return data.substr( 0, 50 );
-                            }
-                        } ],
                         dom: "Bfrtip",
                         buttons: [
                             {
@@ -160,7 +157,7 @@
             $('.deleteEn').click(function(){
 
 
-                $('#deletForm').attr('action',url+'/'+$(this).attr('idlivre'));
+                $('#deletForm').attr('action',url+'/'+$(this).attr('idprof'));
 
 
 
