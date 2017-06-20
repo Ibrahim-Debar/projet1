@@ -49,16 +49,15 @@ class LivreController extends Controller
 
         $rules = array(
             'titre'          => 'required|unique:ouvrages,titre_propre,NULL,id,types_ouvrage_id,1',
-            'auteur'       => 'required',
+            'nom'       => 'required',
+            'n_order'       => 'required',
         );
 
         // create custom validation messages ------------------
         $messages = array(
-            'required' => 'The :attribute is really really really important.',
-            'unique' => 'exist :attribute',
+            'required' => ':attribute est obligatoire.',
+            'unique' => ' :attribute exist.',
         );
-
-
 
         $this->validate($request,$rules,$messages);
 
@@ -73,13 +72,20 @@ class LivreController extends Controller
           "prix" => $request->input('prix'),
           "langue" => $request->input('langue'),
           "typeAchat" => $request->input('typeAchat'),
-          "resume" => $request->input('resumme'),
+          "resume" => $request->input('resume'),
           "mot_cle" => $request->input('motCles'),
-          "types_ouvrage_id" => 1
+          "types_ouvrage_id" => 1,
+          "collection" => $request->input('collection'),
+           "anneAq" => $request->input('anneeAcq'),
 
          ])->id;
-
-
+        exemplaire::create([
+            'n_ordre' => $request->input('n_order'),
+            'anneeAcq'   => $request->input('anneeAcq'),
+            'ouvrage_id' => $id,
+            'prix'   => $request->input('prix'),
+            'type_achat'   => $request->input('typeAchat'),
+        ]);
         foreach($request->input('auteur') as $auteur){
             Auteur::create([
                 'nom' => $auteur,
@@ -87,9 +93,6 @@ class LivreController extends Controller
 
             ]);
         }
-
-
-
 
         return redirect('livre/create')->with('message','Everything went great');
 
@@ -131,6 +134,9 @@ class LivreController extends Controller
     {
 
 
+//       dd($request->all());
+
+
 
 
 
@@ -140,11 +146,13 @@ class LivreController extends Controller
             "titre_propre" => $request->input('titre'),
             "edition" => $request->input('editeur'),
             "annee_edition" => $request->input('annee'),
+            "anneAq" => $request->input('anneeAcq'),
             "prix" => $request->input('prix'),
             "langue" => $request->input('langue'),
             "typeAchat" => $request->input('typeAchat'),
-            "resume" => $request->input('resumme'),
+            "resume" => $request->input('resume'),
             "mot_cle" => $request->input('motCles'),
+            "collection" => $request->input('collection'),
             "types_ouvrage_id" => 1
 
         ]);
@@ -181,27 +189,32 @@ class LivreController extends Controller
      */
     public function createCopy($id)
     {
+
         $livre = livre::find($id);
         return view('livres.exemplaires.create',['livre'=>$livre]);
     }
 
     public function storeCopy(Request $request)
     {
+
+
         $rules = array(
             'titre'          => 'required',
             'n_ordre'       => 'required|unique:exemplaires',
         );
         // create custom validation messages ------------------
         $messages = array(
-            'required' => 'The :attribute is really really really important.',
-            'unique' => 'exist :attribute',
+            'required' => ':attribute est obligatoire.',
+            'unique' => ' :attribute exist.',
         );
         $this->validate($request,$rules,$messages);
+
         exemplaire::create([
             "ouvrage_id"=>    $request->input("idLivre"),
             "n_ordre"=>    $request->input("n_ordre"),
-            "type_achat"=>    $request->input("type_achat"),
+            "type_achat"=>    $request->input("typeAchat"),
             "prix"=>    $request->input("prix"),
+            "anneeAcq"=>    $request->input("anneeAcq"),
 
         ]);
         return redirect()->to($this->getRedirectUrl())->with('message','Everything went great');
@@ -224,14 +237,14 @@ class LivreController extends Controller
         // create custom validation messages ------------------
 
         $messages = array(
-            'required' => 'The :attribute is really really really important.',
+            'required' => ':attribute est obligatoire.',
         );
 
         $this->validate($request,$rules,$messages);
 
         exemplaire::where('id',$id)->update([
             "n_ordre" => $request->input('n_ordre'),
-            "type_achat" => $request->input('type_achat'),
+            "type_achat" => $request->input('typeAchat'),
             "prix" => $request->input('prix')
 
         ]);

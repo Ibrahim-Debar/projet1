@@ -32,40 +32,45 @@
                     <br>
                     {!! Form::open(['url'=>'livre/exemplaire/'.$exemple->id,'method'=>'PUT','class'=>'form-horizontal form-label-left']) !!}
 
-                    <input type="hidden" value="{{$exemple->livre->id}}" name="idLivre">
+                    <input type="hidden" value="{{$exemple->publication-->id}}" name="idLivre">
                     <div class="form-group">
                         {!!  Form::label('titre', 'Titre ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre', $exemple->livre->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('titre', $exemple->publication-->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('n_ordre', 'N° D\'ordre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('nom', 'Publicateur*', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('n_ordre', $exemple->n_ordre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('nom', $exemple->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('type_achat', 'type_achat', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('annee', 'Date de publication', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-
-                            {!! Form::select('typeAchat', ['achat'=>'achat', 'don'=>'don', 'echange' =>'echange'],$exemple->type_achat,['class'=>'form-control select2-hidden-accessible']) !!}
-
+                            {!! Form::text('annee', $exemple->annee,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('prix', 'prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('resumme', 'Résumé', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prix', $exemple->prix,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('resumme', $exemple->resumme,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {!!  Form::label('mot_cle', 'Mots clés', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('mot_cle', $exemple->resumme,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
-                            <a  class="btn btn-primary" href="{{route('livre.index')}}">Anuler</a>
+                            <button type="submit" class="btn btn-primary">Annuler</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

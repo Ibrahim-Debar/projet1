@@ -16,7 +16,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Button Example <small>Users</small></h2>
+                    <h2>Espace Géstion <small>Users</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -35,15 +35,13 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <p class="text-muted font-13 m-b-30">
-                        The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
-                    </p>
+
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -80,11 +78,11 @@
 
                 {!! Form::open(['url' => 'enseignant/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
                 <div class="modal-body">
-                    <h1>vasdjhas dasjkdas daksda </h1>
+                    <h1>Vous voulez vraiment supprimer cet élément? </h1>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">non</button>
-                    <button type="submit" class="btn btn-primary">oui</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Supprimer</button>
                 </div>
                 {!! Form::close() !!}
 

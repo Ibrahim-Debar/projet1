@@ -29,10 +29,10 @@
                         <!-- title row -->
                         <div class="row">
                             <div class="col-xs-12 invoice-header">
-                                <h5>
+                                <h1>
                                     <i class="fa fa-book"></i> {{$these->titre_propre}}
                                     <small class="pull-right">Date: {{$these->created_at}}</small>
-                                </h5>
+                                </h1>
                             </div>
                             <!-- /.col -->
                         </div>
@@ -44,19 +44,15 @@
                                     <b>Description</b>
                                     <br>
                                     <br>
-                                    <b>These genre:</b> {{$these->these_genre}}
+                                    <b>Titre :</b> {{$these->titre_propre}}
                                     <br>
-                                    <b>Date soutenue:</b> {{$these->date_soutenue}}
+                                    <b>Date de soutenance:</b> {{$these->date_soutenue}}
                                     <br>
-
+                                    <b>Type thèse :</b> {{$these->these_genre}}
+                                    <br>
                                     <b>Langue:</b> {{$these->langue}}
+                                    <br>
                                 </address>
-
-
-
-
-
-
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-4 invoice-col">
@@ -107,7 +103,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-
+                                        <th>ID</th>
                                         <th>N° D'ORDRE </th>
                                         <th>Action</th>
 
@@ -119,14 +115,15 @@
 
                                         @foreach($these->exemplaires->all() as  $key => $value)
                                             <tr>
-
+                                                <td>
+                                                    {{$value->id}}
+                                                </td>
                                                 <td>
                                                     {{$value->n_ordre}}
                                                 </td>
 
-
                                                 <td>
-                                                    {{--<a href="{{route('these.editCopy',$value->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>--}}
+                                                    <a href="{{route('these.editCopy',$value->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>
                                                     <button idexempl="{{$value->id}}"  type="button" class="btn btn-danger deleteEn" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
                                                 </td>
                                             </tr>
@@ -167,8 +164,8 @@
 
                 {!! Form::open(['url' => 'these/exemplaire/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
                 <div class="modal-body">
-                    <h1>vasdjhas dasjkdas daksda </h1>
-                    <input type="hidden" name="idLivre" value="{{$these->id}}" id="inputidLivre">
+                    <h1>vous voulez vraiment supprimer? </h1>
+                    <input type="hidden" name="idThese" value="{{$these->id}}" id="inputidLivre">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">non</button>

@@ -8,16 +8,7 @@
     <link href="{{asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
-<style>
-    /*.table {*/
-        /*table-layout:fixed;*/
-    /*}*/
-    /*.table td span {*/
-        /*white-space: nowrap;*/
-        /*overflow: hidden;*/
-        /*text-overflow: ellipsis;*/
-    /*}*/
-</style>
+
 @endsection
 
 @section('content')
@@ -25,6 +16,23 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
+                    <h2>Les Journaux <small>Users</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
 
@@ -32,39 +40,34 @@
                         <thead>
                         <tr>
                             <th>Titre</th>
-                            <th>Auteur</th>
-                            <th>Date Soutenance</th>
-                            <th>Type Thèse</th>
-                            <th>Langue</th>
-                            <th>Nombre</th>
+                            <th>Editeur</th>
+                            <th>SSN</th>
+                            <th>Volume</th>
+                            <th>N° Supplement</th>
+                            <th>Pagination</th>
+                            <th>Résumé</th>
+                            <th>Mots clés</th>
                             <th>Action</th>
+
                         </tr>
                         </thead>
+
                         <tbody>
-                        @foreach($theses as $these)
+                        @foreach($journals as $journal)
                             <tr>
-                                <td >{{$these->titre_propre}}</td>
+                                <td>{{$journal->titre_propre}}</td>
+                                <td>{{$journal->edition}}</td>
+                                <td>{{$journal->issn}}</td>
+                                <td>{{$journal->volume}}</td>
+                                <td>{{$journal->nsupplement}}</td>
+                                <td>{{$journal->pagination}}</td>
+                                <td>{{$journal->resume}}</td>
+                                <td>{{$journal->mot_cle}}</td>
                                 <td>
-                                    @if (count($these->Auteurs->all())>0)
-                                        <?php $last_key =  count($these->Auteurs->all())  ?>
-                                        @foreach($these->Auteurs->all() as  $key => $value)
-                                            @if ($key == $last_key-1)
-                                                {{$value->nom}}
-                                            @else
-                                                {{$value->nom}} |
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>{{$these->date_soutenue}}</td>
-                                <td>{{$these->these_genre}}</td>
-                                <td>{{$these->langue}}</td>
-                                <td>{{count( $these->exemplaires->all() )}}</td>
-                                <td>
-                                    <a href="{{route('these.edit',$these->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>
-                                    <a href="{{url('these/exemplaire/create/'.$these->id)}}" class="btn  btn-info"><li class="fa fa-files-o"></li> </a>
-                                    <a href="{{url('these/'.$these->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-eye-open"></li> </a>
-                                    <button idThese="{{$these->id}}" type="button" class="btn btn-danger deleteEn" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
+                                    <a href="{{route('journal.edit',$journal->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>
+                                    <a href="{{url('journal/exemplaire/create/'.$journal->id)}}" class="btn  btn-info"><li class="fa fa-files-o"></li> </a>
+                                    <a href="{{url('journal/'.$journal->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-eye-open"></li> </a>
+                                    <button idjournal="{{$journal->id}}" type="button" class="btn btn-danger deleteCart" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -83,7 +86,7 @@
                     <h4 class="modal-title" id="gridSystemModalLabel"></h4>
                 </div>
 
-                {!! Form::open(['url' => 'these/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
+                {!! Form::open(['url' => 'journal/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
                 <div class="modal-body">
                     <h1>vous voulez vraiment supprimer ? </h1>
                 </div>
@@ -99,6 +102,7 @@
 
 @endsection
 @section('js')
+
     <!-- Datatables -->
     <script src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
@@ -116,18 +120,14 @@
     <script src="{{asset('vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
     <script>
+
         $(document).ready(function() {
+
+            var url =$('#deletForm').attr('action');
+
             var handleDataTableButtons = function() {
                 if ($("#datatable-buttons").length) {
                     $("#datatable-buttons").DataTable({
-                        columnDefs: [ {
-                            targets: 0,
-                            render: function ( data, type, row ) {
-                                return  data.length > 50 ?
-                                data.substr( 0, 50 ) +'....' :
-                                        data;
-                            }
-                        } ],
                         dom: "Bfrtip",
                         buttons: [
                             {
@@ -164,13 +164,13 @@
                 };
             }();
             TableManageButtons.init();
-            var url =$('#deletForm').attr('action');
-            $('.deleteEn').click(function(){
 
+            console.log(url);
+            $('.deleteCart').click(function(){
 
-                $('#deletForm').attr('action',url+'/'+$(this).attr('idThese'));
+                console.log($(this).attr('idcart'));
 
-
+                $('#deletForm').attr('action',url+'/'+$(this).attr('idjournal'));
 
             });
 

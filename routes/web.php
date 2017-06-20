@@ -37,6 +37,14 @@ Route::delete('carte/exemplaire/{id}','CarteController@destroyCopy')->name('cart
 
 
 Route::resource('these','TheseController');
+Route::get('these/exemplaire/create/{id}','TheseController@createCopy')->name('these.createCopy');
+Route::post('these/exemplaire/store','TheseController@storeCopy')->name('these.storeCopy');
+Route::get('these/exemplaire/edit/{id}','TheseController@editCopy')->name('these.editCopy');
+Route::put('these/exemplaire/{id}','TheseController@updateCopy')->name('these.updateCopy');
+Route::delete('these/exemplaire/{id}','TheseController@destroyCopy')->name('these.deleteCopy');
+
+
+
 Route::resource('publication','PublicationController');
 Route::resource('journal','JournalController');
 Route::resource('enseignant','EnseignantController');

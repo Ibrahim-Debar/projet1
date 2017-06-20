@@ -44,26 +44,32 @@
                         {!!  Form::label('n_ordre', 'N° D\'ordre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('n_ordre', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('n_ordre','',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('type_achat', 'type_achat', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('typeAchat', 'Type d\'acquisition', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('type_achat', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::select('typeAchat', ['achat'=>'achat', 'don'=>'don', 'echange' =>'echange'],$livre->typeAchat,['class'=>'form-control select2-hidden-accessible']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('anneeAcq', 'Année d\'acquisition', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('anneeAcq', $livre->anneAq,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('prix', 'prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prix', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('prix',$livre->prix ,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
-                            <button type="submit" class="btn btn-primary">Cancel</button>
+                            {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
+                            <a  class="btn btn-primary" href="{{route('livre.index')}}">Anuler</a>
                         </div>
                     </div>
                     {!! Form::close() !!}

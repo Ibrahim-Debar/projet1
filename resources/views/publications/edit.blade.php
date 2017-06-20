@@ -24,55 +24,65 @@
                     <div class="clearfix"></div>
                 </div>
 
-                @include('alerts.success')
+
 
                 @include('alerts.errors')
+                @include('alerts.success')
+
+
 
                 <div class="x_content">
                     <br>
-                    {!! Form::open(['url'=>'livre/exemplaire/'.$exemple->id,'method'=>'PUT','class'=>'form-horizontal form-label-left']) !!}
 
-                    <input type="hidden" value="{{$exemple->livre->id}}" name="idLivre">
+
+
+                    {!! Form::model($publication,['route' => array('publication.update', $publication->id),'method'=>'PUT','class'=>'form-horizontal form-label-left']) !!}
+
                     <div class="form-group">
-                        {!!  Form::label('titre', 'Titre ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('titre_propre', 'Titre', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre', $exemple->livre->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('titre_propre',null,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('n_ordre', 'N° D\'ordre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('nom', 'Editeur *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('n_ordre', $exemple->n_ordre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('nom', $Auteur->nom,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('type_achat', 'type_achat', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('date_soutenue', 'Date de publication *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
-
-                            {!! Form::select('typeAchat', ['achat'=>'achat', 'don'=>'don', 'echange' =>'echange'],$exemple->type_achat,['class'=>'form-control select2-hidden-accessible']) !!}
-
+                            {!! Form::text('date_soutenue', null,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('prix', 'prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('resume', 'Résumé', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prix', $exemple->prix,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('resume', null,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
-                            <a  class="btn btn-primary" href="{{route('livre.index')}}">Anuler</a>
+                            <button type="submit" class="btn btn-primary">Annuler</button>
+
                         </div>
                     </div>
+
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
+
+
+
 
 
 @endsection

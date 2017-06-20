@@ -27,7 +27,7 @@
                                 <th>ISBN</th>
                                 <th>Auteur</th>
                                 <th>annee</th>
-                                <th>Edition</th>
+                                <th>Collection</th>
                                 <th>Prix</th>
                                 <th>nombre de copy</th>
                                 <th>Action</th>

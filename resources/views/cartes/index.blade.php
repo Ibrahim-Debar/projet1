@@ -16,22 +16,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Button Example <small>Users</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Settings 1</a>
-                                </li>
-                                <li><a href="#">Settings 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
+                    <h2>Les cartes </h2>
+
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -39,15 +25,13 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>Echelle</th>
                             <th>Nom</th>
+                            <th>Echelle</th>
                             <th>Catégorie</th>
-                            <th>Pays</th>
                             <th>Nature</th>
                             <th>Feuille</th>
                             <th>Année d'édition</th>
-                            <th>Subdivision</th>
-                            <th>Lieu de conservation</th>
+                            <th>Nombre</th>
                             <th>Action</th>
 
                         </tr>
@@ -56,18 +40,18 @@
                         <tbody>
                         @foreach($cartes as $carte)
                             <tr>
-                                <td>{{$carte->echelle}}</td>
                                 <td>{{$carte->titre_propre}}</td>
+                                <td>{{$carte->echelle}}</td>
                                 <td>{{$carte->tyope_carte}}</td>
-                                <td>{{$carte->pays}}</td>
                                 <td>{{$carte->nature}}</td>
                                 <td>{{$carte->feuille}}</td>
                                 <td>{{$carte->annee_edition}}</td>
-                                <td>{{$carte->subdivision}}</td>
-                                <td>{{$carte->lieuConservation}}</td>
+                                <td>{{count( $carte->exemplaires->all() )}}</td>
                                 <td>
                                     <a href="{{route('carte.edit',$carte->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>
-                                    <button idprof="{{$carte->id}}" type="button" class="btn btn-danger deleteEn" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
+                                    <a href="{{url('carte/exemplaire/create/'.$carte->id)}}" class="btn  btn-info"><li class="fa fa-files-o"></li> </a>
+                                    <a href="{{url('carte/'.$carte->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-eye-open"></li> </a>
+                                    <button idcart="{{$carte->id}}" type="button" class="btn btn-danger deleteCart" data-toggle="modal" data-target=".bs-example-modal-lg"><li class="glyphicon glyphicon-remove"></li></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -88,7 +72,7 @@
 
                 {!! Form::open(['url' => 'carte/','method'=>'DELETE' ,'id'=>'deletForm','class'=>'form-horizontal form-label-left']) !!}
                 <div class="modal-body">
-                    <h1>vasdjhas dasjkdas daksda </h1>
+                    <h1>vous voulez vraiment supprimer ? </h1>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">non</button>
@@ -102,6 +86,7 @@
 
 @endsection
 @section('js')
+
     <!-- Datatables -->
     <script src="{{asset('vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
@@ -119,10 +104,22 @@
     <script src="{{asset('vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
     <script>
+
         $(document).ready(function() {
+
+            var url =$('#deletForm').attr('action');
+
             var handleDataTableButtons = function() {
                 if ($("#datatable-buttons").length) {
                     $("#datatable-buttons").DataTable({
+                        columnDefs: [ {
+                            targets: 0,
+                            render: function ( data, type, row ) {
+                                return  data.length > 50 ?
+                                data.substr( 0, 50 ) +'....' :
+                                        data;
+                            }
+                        } ],
                         dom: "Bfrtip",
                         buttons: [
                             {
@@ -159,13 +156,13 @@
                 };
             }();
             TableManageButtons.init();
-            var url =$('#deletForm').attr('action');
-            $('.deleteEn').click(function(){
 
+            console.log(url);
+            $('.deleteCart').click(function(){
+                alert()
+                console.log($(this).attr('idcart'));
 
-                $('#deletForm').attr('action',url+'/'+$(this).attr('idprof'));
-
-
+                $('#deletForm').attr('action',url+'/'+$(this).attr('idcart'));
 
             });
 

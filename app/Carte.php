@@ -15,6 +15,7 @@ class Carte extends Model
                             'echelle'          ,
                             'types_ouvrage_id'  ,
                             'pays'              ,
+                            'mot_cle'              ,
                             'nature'            ,
                             'feuille'           ,
                             'subdivision'       ,
@@ -27,5 +28,8 @@ class Carte extends Model
         return $query->where('types_ouvrage_id',3)->get();
     }
 
+    public function exemplaires(){
 
+        return $this->hasMany('App\exemplaire','ouvrage_id');
+    }
 }

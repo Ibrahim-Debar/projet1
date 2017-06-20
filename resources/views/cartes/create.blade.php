@@ -25,9 +25,9 @@
                     <div class="clearfix"></div>
                 </div>
 
-               @include('alerts.errors');
+               @include('alerts.errors')
 
-               @include('alerts.success');
+               @include('alerts.success')
 
 
                 <div class="x_content">
@@ -38,72 +38,91 @@
                         {!!  Form::label('echelle', 'Echelle', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('echelle', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('echelle', '',['placeholder'=>"entrer l'echelle",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('nom', 'Nom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('nom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('nom', '',['placeholder'=>"entrer le nom de la carte",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('type', 'Catégorie *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('type', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('type', '',['placeholder'=>"entrer la catégorie",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('pays', 'Pays *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('pays', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('pays', '',['placeholder'=>"entrer le pays",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('nature', 'Nature *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('nature', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('nature', '',['placeholder'=>"entrer la nature",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('feuille', 'Feuille *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('feuille', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('feuille', '',['placeholder'=>"entrer la feuille",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('annee', 'Année d\'édition *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('annee', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('annee', '',['placeholder'=>"entrer l'année d'édition",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('subdivision', 'Subdivision *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('subdivision', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('subdivision', '',['placeholder'=>"entrer la subdivision ",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('lieuConservation', 'Lieu de conservation *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('lieuConservation', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('lieuConservation', '',['placeholder'=>"entrer le lieu de conservation ",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
 
+                    <div class="form-group">
+                        <h4><center> séparer les mots clés par un point vergule ;</center> </h4>
+                    </div>
+
+                    <div class="form-group">
+                        {!!  Form::label('motCles', 'Mots clés  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::textarea('motCles', '',['placeholder'=>"entrer les mots clés ",'class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('n_order', 'N° D\'ordre', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('n_ordre', '',['placeholder'=>"entrer le n° ordre",'class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
-                            <button type="submit" class="btn btn-primary">Cancel</button>
+                            {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
+                            <button type="submit" class="btn btn-primary">Annuler</button>
 
                         </div>
                     </div>

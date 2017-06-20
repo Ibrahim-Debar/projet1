@@ -49,7 +49,7 @@
                         {!!  Form::label('titre_propre', 'Nom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre_propre', null,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::textarea('titre_propre', null,['placeholder'=>"entrer les mots clés ",'class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -101,7 +101,17 @@
                             {!! Form::text('lieuConservation', null,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        <h4><center> séparer les mots clés par un point vergule ;</center> </h4>
+                    </div>
 
+                    <div class="form-group">
+                        {!!  Form::label('mot_cle', 'Mots clés  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::textarea('mot_cle', null,['placeholder'=>"entrer les mots clés ",'class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                        </div>
+                    </div>
 
 
                     <div class="form-group">

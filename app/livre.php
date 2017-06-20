@@ -12,7 +12,7 @@ class livre extends Model
     protected $fillable = [
         'titre_propre'     ,
         'edition'      ,
-        'date_soutenue'          ,
+        'anneAq'      ,
         'annee_edition',
         'prix',
         'isbn',
@@ -20,6 +20,7 @@ class livre extends Model
         'mot_cle',
         'resume',
         'types_ouvrage_id',
+        'typeAchat',
 
     ];
 

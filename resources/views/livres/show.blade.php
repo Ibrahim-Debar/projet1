@@ -104,9 +104,9 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+
                                         <th>N° D'ORDRE </th>
-                                        <th>TYPE D'ACHAT</th>
+                                        <th>TYPE D'ACQUISITION</th>
                                         <th>PRIX</th>
                                         <th>Action</th>
 
@@ -118,9 +118,7 @@
 
                                             @foreach($livre->exemplaires->all() as  $key => $value)
                                               <tr>
-                                                    <td>
-                                                        {{$value->id}}
-                                                    </td>
+
                                                   <td>
                                                         {{$value->n_ordre}}
                                                     </td>
@@ -128,7 +126,12 @@
                                                         {{$value->type_achat}}
                                                     </td>
                                                   <td>
-                                                        {{$value->prix}}
+                                                      @if(is_null($value->prix))
+                                                          {{$livre->prix}}
+                                                      @else
+                                                          {{$value->prix}}
+                                                      @endif
+
                                                     </td>
                                                   <td>
                                                       <a href="{{route('livre.editCopy',$value->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>

@@ -39,7 +39,7 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>Nom Prenom</th>
+                            <th>Enseignant</th>
                             <th>Titre</th>
                             <th>N°ordre</th>
                             <th>Delai</th>
@@ -52,12 +52,12 @@
                         <tbody>
                         @foreach($emprunts as $emprunt)
                             <tr>
-                                <td>{{$emprunt->enseignant->nom}} {{$emprunt->enseignant->prenom}}</td>
+                                <td>{{$emprunt->enseignant->nom}}</td>
                                 <td>{{$emprunt->exemplaire->livre->titre_propre}}</td>
                                 <td>{{$emprunt->exemplaire->n_ordre}}</td>
                                 <td>{{$emprunt->deai}}</td>
-                                <td>{{$emprunt->date_debut->format(' j F Y') }}</td>
-                                <td>{{$emprunt->date_fin->formatLocalized('%d  %B %Y')}}</td>
+                                <td>{{$emprunt->deai}}</td>
+                                <td>{{$emprunt->deai}}</td>
 
                                 <td>
                                     <a href="{{route('these.edit',$emprunt->id)}}" class="btn  btn-info"><li class="glyphicon glyphicon-pencil"></li> </a>

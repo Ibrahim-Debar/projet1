@@ -30,42 +30,46 @@
 
                 <div class="x_content">
                     <br>
-                    {!! Form::open(['url'=>'livre/exemplaire/'.$exemple->id,'method'=>'PUT','class'=>'form-horizontal form-label-left']) !!}
+                    {!! Form::open(['url' => 'journal/exemplaire/store','class'=>'form-horizontal form-label-left']) !!}
 
-                    <input type="hidden" value="{{$exemple->livre->id}}" name="idLivre">
+                    <input type="hidden" value="{{$journal->id}}" name="idLivre">
                     <div class="form-group">
                         {!!  Form::label('titre', 'Titre ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre', $exemple->livre->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('titre', $journal->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('n_ordre', 'N° D\'ordre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('edition', 'Editeur *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('n_ordre', $exemple->n_ordre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('edition', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('type_achat', 'type_achat', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('issn', 'SSN', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-
-                            {!! Form::select('typeAchat', ['achat'=>'achat', 'don'=>'don', 'echange' =>'echange'],$exemple->type_achat,['class'=>'form-control select2-hidden-accessible']) !!}
-
+                            {!! Form::text('issn', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('prix', 'prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('volume', 'Volume', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prix', $exemple->prix,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('volume', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('volume', 'Volume', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('volume', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
-                            <a  class="btn btn-primary" href="{{route('livre.index')}}">Anuler</a>
+                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
+                            <button type="submit" class="btn btn-primary">Cancel</button>
                         </div>
                     </div>
                     {!! Form::close() !!}

@@ -36,7 +36,7 @@
                     data: {"_token": "{{ csrf_token() }}",
                         "types_ouvrage_id": $(this).val()},
                     success: function(data){
-
+                        console.log(data);
                         $("#listTitre").empty().trigger('change');
                         $("#listTitre").select2({
                             placeholder: "Select a state",
@@ -49,7 +49,7 @@
             });
             $("#listTitre").on('select2:select',function (evt)
             {
-                $("#listExempl").empty().trigger('change');
+
                 $.ajax({
                     method:"POST",
                     url: "{{url('selectTypeExempl')}}",

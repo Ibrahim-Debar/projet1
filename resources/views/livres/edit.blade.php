@@ -38,22 +38,14 @@
                         {!!  Form::label('isbn', 'ISBN ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('isbn',$livre->isbn,['class' => 'form-control col-md-7 col-xs-12']) !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!!  Form::label('titre', 'Titre Propre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('titre', $livre->titre_propre,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('isbn', $livre->isbn,['placeholder'=>"entrer l' ISBN",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('editeur', 'Editeur', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('titre', 'Titre *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('editeur',$livre->edition ,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('titre', $livre->titre_propre,['placeholder'=>"entrer le titre",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -82,59 +74,72 @@
                         {!!  Form::label('collection', 'Collection', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('collection', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('collection', $livre->collection,['placeholder'=>"entrer la collection",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        {!!  Form::label('annee', 'Annee', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+                        {!!  Form::label('annee',  "Année d'éditon*", ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('annee', $livre->annee_edition,['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('annee', $livre->annee_edition,['placeholder'=>"taper l'année d'édirion",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {!!  Form::label('anneeAcq',  "Année d'acquisition", ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('anneeAcq', $livre->anneAq,['placeholder'=>"taper l'année d'aquisition",'class' => 'form-control col-md-7 col-xs-12']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('typeAchat', "Type d'acquisition" , ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::select('typeAchat', ['achat'=>'achat', 'don'=>'don', 'echange' =>'echange'],$livre->typeAchat,['class'=>'form-control select2-hidden-accessible']) !!}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!!  Form::label('resume', 'Résumé  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::textarea('resume', $livre->resume,['placeholder'=>"tapez le résumé du livre ",'class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4><center> séparer les mots clés par un point vergule ;</center> </h4>
+                    </div>
+
+                    <div class="form-group">
+                        {!!  Form::label('motCles', 'Mots clés  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::textarea('motCles', $livre->mot_cle,['placeholder'=>"entrer les mots clés ",'class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        {!!  Form::label('langue', 'Langue ', ['placeholder'=>"sélectionner la langue ",'class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::select('langue', ['Arabe'=>'Arabe', 'Englais'=>'Englais', 'Francais' =>'Francais', 'Espagnol'=>'Espagnol'], $livre->langue,['class'=>'form-control select2-hidden-accessible']) !!}
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         {!!  Form::label('prix', 'Prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prix', $livre->prix,['class' => 'form-control col-md-7 col-xs-12']) !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!!  Form::label('langue', 'Langue ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::select('langue', ['ar'=>'Arabic', 'en'=>'English', 'fr' =>'French', 'es'=>'Spanish'], 'fr', ['placeholder' => 'Pick a size...']) !!}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!!  Form::label('typeAchat', 'Type Achat ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('typeAchat', $livre->typeAchat,['class' => 'form-control col-md-7 col-xs-12']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {!!  Form::label('resumme', 'Resumme  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::textarea('resumme', $livre->resume,['class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {!!  Form::label('motCles', 'Mot-cles  ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::textarea('motCles', $livre->mot_cle,['class' => 'form-control col-md-7 col-xs-12','size' => '30x3']) !!}
+                            {!! Form::text('prix', $livre->prix,['placeholder'=>"entrer le prix",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
-                            <button type="submit" class="btn btn-primary">Cancel</button>
+                            {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
+                            <a  class="btn btn-primary" href="{{route('livre.index')}}">Anuler</a>
 
                         </div>
                     </div>

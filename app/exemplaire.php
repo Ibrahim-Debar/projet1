@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class exemplaire extends Model
 {
 
-    protected $fillable = ['type_achat','prix','ouvrage_id','n_ordre'];
+    protected $fillable = ['type_achat','prix','ouvrage_id','n_ordre','anneeAcq'];
 
     public function livre(){
 

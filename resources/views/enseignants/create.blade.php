@@ -41,29 +41,29 @@
                         {!!  Form::label('nom', 'Nom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('nom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('nom', '',['placeholder'=>"entrer le nom du professeur",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('prenom', 'Prenom *', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prenom', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('prenom', '',['placeholder'=>"entrer le prénom du professeur",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!!  Form::label('email', 'Email', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('email', '',['class' => 'form-control col-md-7 col-xs-12']) !!}
+                            {!! Form::text('email', '',['placeholder'=>"entrer l'émail du professeur",'class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 
 
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            {!! Form::submit('Submit',['class'=>'btn btn-success']) !!}
-                            <button type="submit" class="btn btn-primary">Cancel</button>
+                            {!! Form::submit('Enregistrer',['class'=>'btn btn-success']) !!}
+                            <button type="submit" class="btn btn-primary">Annuler</button>
 
                         </div>
                     </div>

@@ -32,7 +32,7 @@
                     <br>
                     {!! Form::open(['url'=>'livre/exemplaire/'.$exemple->id,'method'=>'PUT','class'=>'form-horizontal form-label-left']) !!}
 
-                    <input type="hidden" value="{{$exemple->livre->id}}" name="idLivre">
+                    <input type="hidden" value="{{$exemple->livre->id}}" name="idthese">
                     <div class="form-group">
                         {!!  Form::label('titre', 'Titre ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
 
@@ -45,20 +45,6 @@
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {!! Form::text('n_ordre', $exemple->n_ordre,['class' => 'form-control col-md-7 col-xs-12']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {!!  Form::label('type_achat', 'type_achat', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-
-                            {!! Form::select('typeAchat', ['achat'=>'achat', 'don'=>'don', 'echange' =>'echange'],$exemple->type_achat,['class'=>'form-control select2-hidden-accessible']) !!}
-
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {!!  Form::label('prix', 'prix', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!}
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::text('prix', $exemple->prix,['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
                     </div>
 

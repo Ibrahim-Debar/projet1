@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Carte;
+use App\exemplaire;
 use App\ouvrage;
 use Illuminate\Http\Request;
 
@@ -43,6 +44,8 @@ class CarteController extends Controller
     public function store(Request $request)
     {
 
+//        dd($request->all());
+
 
         $rules = array(
             'nom'                    => 'required',
@@ -57,13 +60,12 @@ class CarteController extends Controller
         $messages = array(
             'required' => ':attribute est obligatoire.',
         );
-
         $this->validate($request,$rules,$messages);
 
-        Carte::create([
+        $id = Carte::create([
+            'echelle'           => $request->input('echelle'),
             'titre_propre'      => $request->input('nom')    ,
             'tyope_carte'       => $request->input('type')   ,
-            'echelle'           => $request->input('echelle'),
             'types_ouvrage_id'  => $this->type_ouvr          ,
             'pays'              => $request->input('pays')   ,
             'nature'            => $request->input('nature') ,
@@ -71,8 +73,15 @@ class CarteController extends Controller
             'subdivision'       => $request->input('subdivision'),
             'lieuConservation'  => $request->input('lieuConservation'),
             'annee_edition'  => $request->input('annee'),
+            'mot_cle'  => $request->input('motCles'),
 
+        ])->id;
+
+        exemplaire::create([
+            'n_ordre'=>$request->input('n_ordre'),
+            'ouvrage_id'=>$id,
         ]);
+
         return redirect('carte/create')->with('message','Everything went great');
     }
 
@@ -84,7 +93,9 @@ class CarteController extends Controller
      */
     public function show($id)
     {
-        //htest
+        $carte =Carte::find($id);
+
+        return view('cartes.show',['carte'=>$carte]);
     }
 
     /**
@@ -135,6 +146,7 @@ class CarteController extends Controller
       "feuille"          => $request->input('feuille'),
       "annee_edition"    => $request->input('annee_edition'),
       "subdivision"      => $request->input('subdivision'),
+      "mot_cle"      => $request->input('mot_cle'),
       "lieuConservation" => $request->input('lieuConservation')
       ]);
 
@@ -165,12 +177,13 @@ class CarteController extends Controller
      */
     public function createCopy($id)
     {
-        $livre = livre::find($id);
-        return view('livres.exemplaires.create',['livre'=>$livre]);
+        $carte = Carte::find($id);
+        return view('cartes.exemplaires.create',['carte'=>$carte]);
     }
 
     public function storeCopy(Request $request)
     {
+
         $rules = array(
             'titre'          => 'required',
             'n_ordre'       => 'required|unique:exemplaires',
@@ -182,10 +195,8 @@ class CarteController extends Controller
         );
         $this->validate($request,$rules,$messages);
         exemplaire::create([
-            "ouvrage_id"=>    $request->input("idLivre"),
-            "n_ordre"=>    $request->input("n_ordre"),
-            "type_achat"=>    $request->input("type_achat"),
-            "prix"=>    $request->input("prix"),
+            "ouvrage_id"=>    $request->input("idcarte"),
+            "n_ordre"=>    $request->input("n_ordre")
 
         ]);
         return redirect()->to($this->getRedirectUrl())->with('message','Everything went great');

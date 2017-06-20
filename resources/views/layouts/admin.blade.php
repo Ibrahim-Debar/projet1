@@ -57,7 +57,6 @@
                             <li><a><i class="fa fa-book"></i> Livre <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('livre/create')}}">Aouter un livre </a></li>
-                                    <li><a href="{{url('livre/create')}}">Ajouter Exemplaitr </a></li>
                                     <li><a href="{{url('livre/')}}">Liste livre  </a></li>
 
                                 </ul>
@@ -72,14 +71,14 @@
                             <li><a><i class="fa fa-file"></i> Publication <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('publication/create')}}">Ajouter publication</a></li>
-                                    <li><a href="{{url('publication/show')}}">Liste Publication</a></li>
+                                    <li><a href="{{url('publication/')}}">Liste Publication</a></li>
                                     <li><a href="calendar.html">Calendar</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-file"></i> Journal <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{url('journal/create')}}">ajouter journal</a></li>
-                                    <li><a href="{{url('journal/show')}}">Liste Journaux</a></li>
+                                    <li><a href="{{url('journal/')}}">Liste Journaux</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-book"></i> Cartes <span class="fa fa-chevron-down"></span></a>

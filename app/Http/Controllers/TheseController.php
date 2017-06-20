@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Auteur;
+use App\exemplaire;
 use App\these;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TheseController extends Controller
 {
@@ -13,6 +16,7 @@ class TheseController extends Controller
     {
 
         $theses = these::get();
+
 
 
 
@@ -38,30 +42,33 @@ class TheseController extends Controller
     public function store(Request $request)
     {
 
-//these
-
         $rules = array(
             'titre_propre'                    => 'required',
-            'nom'                   => 'required',
-            'edition'                => 'required',
+            'nom'                           => 'required',
             'date_soutenue'                   => 'required',
             'these_genre'                 => 'required',
-
+            'n_ordre'                 => 'required|unique:exemplaires',
         );
         // create custom validation messages ------------------
         $messages = array(
             'required' => ':attribute est obligatoire.',
+            'unique' => ' :attribute exist.',
         );
+
+        $input  = $request->input('date_soutenue');
 
         $this->validate($request,$rules,$messages);
 
+
        $id= These::create([
             'titre_propre'      => $request->input('titre_propre')    ,
-            'edition'       => $request->input('edition')   ,
-
-            'date_soutenue'           => $request->input('date_soutenue'),
+            'date_soutenue'           =>$input ,
             'types_ouvrage_id'  => $this->type_ouvr          ,
             'these_genre'              => $request->input('these_genre')   ,
+            'resume'              => $request->input('resumme')   ,
+            'mot_cle'              => $request->input('motCles')   ,
+            'langue'              => $request->input('langue')
+
 
         ])->id;
         Auteur::create([
@@ -70,6 +77,11 @@ class TheseController extends Controller
 
         ]);
 
+        exemplaire::create([
+            'n_ordre'=> $request->input('n_ordre'),
+            'ouvrage_id'=> $id
+
+        ]);
 
         return redirect('these/create')->with('message','insertion avec succès');
     }
@@ -82,7 +94,10 @@ class TheseController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $these = these::find($id);
+
+        return view('theses.show',['these'=>$these]);
     }
 
     /**
@@ -108,7 +123,47 @@ class TheseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $rules = array(
+            'titre_propre'                    => 'required',
+            'nom'                           => 'required',
+            'date_soutenue'                   => 'required',
+            'these_genre'                 => 'required',
+        );
+        // create custom validation messages ------------------
+        $messages = array(
+            'required' => ':attribute est obligatoire.',
+            'unique' => ' :attribute exist.',
+        );
+
+
+
+        $this->validate($request,$rules,$messages);
+
+
+        $format = 'd-m-Y';
+
+
+      These::where('id',$id)->update([
+            'titre_propre'      => $request->input('titre_propre')    ,
+            'date_soutenue'           =>  Carbon::createFromFormat($format,$request->input('date_soutenue')),
+            'types_ouvrage_id'  => $this->type_ouvr          ,
+            'these_genre'              => $request->input('these_genre')   ,
+            'resume'              => $request->input('resumme')   ,
+            'mot_cle'              => $request->input('motCles')   ,
+            'langue'              => $request->input('langue')
+
+
+        ]);
+
+        Auteur::where('ouvrage_id',$id)->delete();
+        Auteur::create([
+            'nom'=> $request->input('nom'),
+            'ouvrage_id'=>$id,
+
+        ]);
+        return redirect('these')->with('message','insertion avec succès');
+
     }
 
     /**
@@ -119,6 +174,81 @@ class TheseController extends Controller
      */
     public function destroy($id)
     {
-        //
+       these::destroy($id);
+        return redirect('these');
     }
+
+
+
+    public function createCopy($id)
+    {
+
+        $these = these::find($id);
+        return view('theses.exemplaires.create',['these'=>$these]);
+    }
+
+    public function storeCopy(Request $request)
+    {
+
+
+        $rules = array(
+            'n_ordre'       => 'required|unique:exemplaires',
+        );
+        // create custom validation messages ------------------
+        $messages = array(
+            'required' => ':attribute est obligatoire.',
+            'unique' => ' :attribute exist.',
+        );
+        $this->validate($request,$rules,$messages);
+
+        exemplaire::create([
+            "ouvrage_id"=>    $request->input("idThese"),
+            "n_ordre"=>    $request->input("n_ordre"),
+
+
+        ]);
+        return redirect()->to($this->getRedirectUrl())->with('message','Everything went great');
+    }
+
+    public function editCopy($id)
+    {
+        $exemple = exemplaire::find($id);
+        return view('theses.exemplaires.edit',['exemple'=>$exemple]);
+    }
+
+    public function updateCopy(Request $request, $id)
+    {
+
+
+        $rules = array(
+            'n_ordre'          => 'required',
+        );
+
+        // create custom validation messages ------------------
+
+        $messages = array(
+            'required' => ':attribute est obligatoire.',
+        );
+
+        $this->validate($request,$rules,$messages);
+
+        exemplaire::where('id',$id)->update([
+            "n_ordre" => $request->input('n_ordre'),
+        ]);
+
+        return redirect()->route('these.show',$request->input('idthese'));
+    }
+
+
+    public function destroyCopy(Request $request,$id)
+    {
+
+        exemplaire::destroy($id);
+        return redirect()->route('livre.show',$request->input('idLivre'));
+
+    }
+
+
+
+
 }
